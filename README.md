@@ -21,8 +21,10 @@
 ```bash
  # 로컬 프로젝트 실행
  $ pnpm dev
+
  # 로컬 빌드
  $ pnpm start
+
  # 배포 빌드
  $ pnpm build 
 ```
