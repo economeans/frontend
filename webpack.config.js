@@ -72,6 +72,13 @@ module.exports = {
     historyApiFallback: true,
     port: PORT,
     static: path.resolve(__dirname, "dist"),
+    server: {
+      type: "https",
+      options: {
+        key: path.resolve(__dirname, "cert/localhost-key.pem"),
+        cert: path.resolve(__dirname, "cert/localhost.pem"),
+      }
+    },
     proxy: [
       {
         context: ["/api"],

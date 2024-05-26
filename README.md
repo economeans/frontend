@@ -29,6 +29,22 @@
  $ pnpm build 
 ```
 
+### SSL 인증서 발급
+
+```
+$ mkdir cert
+$ cd cert
+
+# mac Os
+$ brew install mkcert
+# windows
+$ choco install mkcert
+
+$ mkcert -install
+
+$ mkcert localhost
+```
+
 ### Directory
 ```
 .

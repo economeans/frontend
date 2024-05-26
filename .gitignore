@@ -222,4 +222,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Certificate
+/cert
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudiocode,node
