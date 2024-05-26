@@ -15,5 +15,5 @@
     }
   },
   "exclude": ["node_modules"], // 다른 위치의 tsconfig.json 파일의 설정
-  "include": ["**/*.ts", "**/*.tsx"], //  프로젝트에서 컴파일할 파일들을 지정
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js"], //  프로젝트에서 컴파일할 파일들을 지정
 }
