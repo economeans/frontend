@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // 빌드 캐시
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const dotenv = require("dotenv");
 const production = process.env.NODE_ENV === "production"; // 프로덕션 모드 여부 확인
 dotenv.config({
@@ -86,10 +87,10 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-        React: "react",
+      React: "react",
     }),
     new webpack.DefinePlugin({
-      "process.env": JSON.stringify(process.env)
+      "process.env": JSON.stringify(process.env),
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
@@ -106,5 +107,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: production ? "[name].[contenthash].css" : "[name].min.css",
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
 };
