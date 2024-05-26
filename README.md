@@ -35,13 +35,16 @@
 $ mkdir cert
 $ cd cert
 
+# mkcert 설치
 # mac Os
 $ brew install mkcert
 # windows
 $ choco install mkcert
 
+# 로컬 인증 기관 등록
 $ mkcert -install
 
+# 인증서 생성
 $ mkcert localhost
 ```
 
