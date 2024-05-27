@@ -40,12 +40,6 @@ module.exports = {
       chunks: "all",
     },
   },
-  resolve: {
-    extentions: [".js", ".jsx", ".ts", ".tsx", ".css", "json"], // import를 할 때 확장자를 생략
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
   module: {
     rules: [
       {
@@ -54,10 +48,11 @@ module.exports = {
         use: production ? "babel-loader" : "ts-loader",
       },
       {
-        test: /\.css$/,
+        test: /\.(sass|css|scss)$/,
         use: [
           production ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
+          "sass-loader",
           "postcss-loader",
         ],
       },
@@ -77,7 +72,7 @@ module.exports = {
       options: {
         key: path.resolve(__dirname, "cert/localhost-key.pem"),
         cert: path.resolve(__dirname, "cert/localhost.pem"),
-      }
+      },
     },
     proxy: [
       {
@@ -87,7 +82,16 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".ts", ".jsx", ".tsx", ".css", ".json"],
+    extensions: [
+      ".js",
+      ".ts",
+      ".jsx",
+      ".tsx",
+      ".css",
+      ".sass",
+      ".scss",
+      ".json",
+    ],
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },

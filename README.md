@@ -15,6 +15,7 @@
 - react: @18.xx
 - react-router-dom: @6.xx
 - tailwindcss: @3.xx
+- sass: @1.xx
 
 ### Command Line
 
@@ -57,7 +58,7 @@ $ mkcert localhost
    │  └── common  // 공통 사용 컴포넌트
    ├── pages      // 페이지 컴포넌트
    ├── router     // 페이지 라우터
-   ├── styles     // CSS 스타일
+   ├── sass     // Sass(SCSS) 스타일
    ├── App.tsx
    └── index.tsx
 ```
