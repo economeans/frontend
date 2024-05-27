@@ -54,11 +54,11 @@ $ mkcert localhost
 .
 ├── public
 └── src
-   ├── components // 재사용 컴포넌트
-   │  └── common  // 공통 사용 컴포넌트
-   ├── pages      // 페이지 컴포넌트
-   ├── router     // 페이지 라우터
-   ├── sass     // Sass(SCSS) 스타일
+   ├── components    // 재사용 컴포넌트
+   │  └── common     // 공통 사용 컴포넌트
+   ├── pages         // 페이지 컴포넌트
+   ├── router        // 페이지 라우터
+   ├── sass          // Sass(SCSS) 스타일
    ├── App.tsx
    └── index.tsx
 ```
