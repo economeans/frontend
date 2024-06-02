@@ -1,9 +1,10 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
-import router from "@/router";
 import { ApolloProvider } from "@apollo/client";
 import client from "./apollo";
+import { CookiesProvider } from "react-cookie";
+import { RouterProvider } from "react-router-dom";
+import router from "@/router";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <ApolloProvider client={client}>
-      <RouterProvider router={router} />
+      <CookiesProvider>
+        <RouterProvider router={router} />
+      </CookiesProvider>
     </ApolloProvider>
   </StrictMode>
 );

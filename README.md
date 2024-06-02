@@ -1,6 +1,6 @@
 # ECOMEANS
 
-> 경제 용어 + 기사  사이드 프로젝트
+> 경제 용어 + 기사 사이드 프로젝트
 
 ## 목차
 
@@ -10,15 +10,18 @@
 
 ### Package
 
-- node: @20.xx
-- pnpm: @9.xx
-- react: @18.xx
-- react-router-dom: @6.xx
-- zustand: @4.xx
-- apollo-client: @4.xx
-- graphql: @16.xx
-- tailwindcss: @3.xx
-- sass: @1.xx
+| Skill         | Version | Note              |
+| ------------- | ------- | ----------------- |
+| Node          | 20.xx   |                   |
+| PNPM          | 9.xx    | 패키지 설치 관리  |
+| React         | 18.xx   |                   |
+| React Router  | 6.xx    | SPA 라우팅        |
+| React Cookie  | 7.xx    | 쿠키 관리         |
+| Zustand       | 4.xx    | 상태 관리         |
+| Apollo Client | 4.xx    | GraphQl 상태 관리 |
+| GraphQL       | 16.xx   |                   |
+| Tailwind CSS  | 3.xx    |                   |
+| Sass(SCSS)    | 1.xx    |                   |
 
 ### Command Line
 
@@ -30,7 +33,7 @@
  $ pnpm start
 
  # 배포 빌드
- $ pnpm build 
+ $ pnpm build
 ```
 
 ### SSL 인증서 발급
@@ -53,6 +56,7 @@ $ mkcert localhost
 ```
 
 ### Directory
+
 ```
 .
 ├── public
