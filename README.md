@@ -14,6 +14,7 @@
 - pnpm: @9.xx
 - react: @18.xx
 - react-router-dom: @6.xx
+- zustand: @4.xx
 - apollo-client: @4.xx
 - graphql: @16.xx
 - tailwindcss: @3.xx
