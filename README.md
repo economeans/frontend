@@ -59,11 +59,12 @@ $ mkcert localhost
 └── src
    ├── components    // 재사용 컴포넌트
    │  └── common     // 공통 사용 컴포넌트
-   ├── apollo        // apollo client
+   ├── apollo        // GraphQL 상태관리
    ├── pages         // 페이지 컴포넌트
    ├── router        // 페이지 라우터
    ├── sass          // Sass(SCSS) 스타일
-   ├── graphql       // graphql query
+   ├── store         // zustand 상태 관리
+   ├── graphql       // GraphQL query
    ├── App.tsx
    └── index.tsx
 ```
