@@ -1,13 +1,16 @@
 import { create } from "zustand";
 
-interface storeState {
+type State = {
   username: string;
-  updateUsername: (username: string) => void;
 }
 
-const useStore = create<storeState>()((set) => ({
+type Action = {
+  updateUsername: (username: State['username']) => void;
+}
+
+const useStore = create<State & Action>((set) => ({
   username: "",
-  updateUsername: (newUsername) => set({ username: newUsername }),
+  updateUsername: (username) => set({ username }),
 }));
 
 export default useStore;
