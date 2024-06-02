@@ -14,6 +14,8 @@
 - pnpm: @9.xx
 - react: @18.xx
 - react-router-dom: @6.xx
+- apollo-client: @4.xx
+- graphql: @16.xx
 - tailwindcss: @3.xx
 - sass: @1.xx
 
@@ -56,9 +58,11 @@ $ mkcert localhost
 └── src
    ├── components    // 재사용 컴포넌트
    │  └── common     // 공통 사용 컴포넌트
+   ├── apollo        // apollo client
    ├── pages         // 페이지 컴포넌트
    ├── router        // 페이지 라우터
    ├── sass          // Sass(SCSS) 스타일
+   ├── graphql       // graphql query
    ├── App.tsx
    └── index.tsx
 ```
