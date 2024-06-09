@@ -22,6 +22,8 @@
 | GraphQL       | 16.xx   |                   |
 | Tailwind CSS  | 3.xx    |                   |
 | Sass(SCSS)    | 1.xx    |                   |
+| ESlint        | 9.xx    | 코드 품질         |
+| Prettier      | 3.xx    | 코드 일관성        |
 
 ### Command Line
 
