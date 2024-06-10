@@ -53,23 +53,17 @@ module.exports = {
           production ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
           "sass-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                syntax: "postcss-scss",
-                plugins: [
-                  "tailwindcss",
-                  "autoprefixer",
-                ]
-              }
-            }
-          },
+          "postcss-loader",
         ],
       },
       {
         test: /\.(png|jpe?g|svg|gif|webp)$/,
-        use: "file-loader",
+        type: "assets",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024
+          }
+        }
       },
     ],
   },

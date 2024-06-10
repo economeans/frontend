@@ -1,15 +1,15 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 type State = {
   username: string;
-}
+};
 
 type Action = {
   updateUsername: (username: State['username']) => void;
-}
+};
 
 const useStore = create<State & Action>((set) => ({
-  username: "",
+  username: '',
   updateUsername: (username) => set({ username }),
 }));
 

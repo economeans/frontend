@@ -1,1 +1,1 @@
-type PageTitleTypes = "article"
+type PageTitleTypes = 'article';

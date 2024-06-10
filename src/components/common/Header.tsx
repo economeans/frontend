@@ -1,5 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
-import "@/sass/components/common/header";
+import { Link, NavLink } from 'react-router-dom';
+import '@/sass/components/common/header';
 
 export default function Header() {
   return (
