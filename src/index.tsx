@@ -5,6 +5,7 @@ import client from './apollo';
 import { CookiesProvider } from 'react-cookie';
 import { RouterProvider } from 'react-router-dom';
 import router from '@/router';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -16,3 +17,5 @@ root.render(
     </ApolloProvider>
   </StrictMode>,
 );
+
+serviceWorkerRegistration.register();
