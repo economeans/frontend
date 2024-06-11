@@ -8,10 +8,12 @@ precacheAndRoute(self.__WB_MANIFEST);
 
 self.addEventListener('install', (event: ExtendableEvent) => {
   console.log('Service Worker installing.');
+  console.log(event);
 });
 
 self.addEventListener('activate', (event: ExtendableEvent) => {
   console.log('Service Worker activating.');
+  console.log(event);
 });
 
 self.addEventListener('fetch', (event: FetchEvent) => {
