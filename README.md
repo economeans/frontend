@@ -71,6 +71,7 @@ $ mkcert localhost
    ├── sass          // Sass(SCSS) 스타일
    ├── store         // zustand 상태 관리
    ├── graphql       // GraphQL query
+   ├── worker        // PWA를 위한 Service workers
    ├── App.tsx
    └── index.tsx
 ```
