@@ -7,8 +7,19 @@
     "dev": "cross-env NODE_ENV=local webpack serve --open",
     "start": "cross-env NODE_ENV=local webpack",
     "build": "cross-env NODE_ENV=production webpack",
-    "format": "prettier ./src --check --write",
+    "format": "prettier ./src --write",
     "lint": "eslint ./src --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*": [
+      "pnpm format",
+      "pnpm lint"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -48,6 +59,8 @@
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "globals": "^15.4.0",
     "html-webpack-plugin": "^5.6.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.6",
     "mini-css-extract-plugin": "^2.9.0",
     "postcss": "^8.4.38",
     "postcss-loader": "^8.1.1",
