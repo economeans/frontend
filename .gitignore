@@ -225,7 +225,4 @@ $RECYCLE.BIN/
 # Certificate
 /cert
 
-# Husky
-.husky/
-
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudiocode,node
