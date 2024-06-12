@@ -9,7 +9,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "format": "prettier ./src --write",
     "lint": "eslint ./src --fix",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "husky": {
     "hooks": {
