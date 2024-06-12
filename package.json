@@ -19,7 +19,8 @@
   "lint-staged": {
     "src/**/*": [
       "pnpm format",
-      "pnpm lint"
+      "pnpm lint",
+      "git add ."
     ]
   },
   "keywords": [],
