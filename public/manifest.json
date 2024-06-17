@@ -1,6 +1,11 @@
 {
-  "short_name": "economeans",
   "name": "ECONOMEANS",
+  "short_name": "EM",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
   "icons": [
     {
       "src": "assets/favicon/favicon.ico",
@@ -17,9 +22,5 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }

@@ -84,6 +84,7 @@ web_modules/
 
 # TypeScript cache
 *.tsbuildinfo
+next-env.d.ts
 
 # Optional npm cache directory
 .npm
@@ -224,5 +225,12 @@ $RECYCLE.BIN/
 
 # Certificate
 /cert
+
+# Service-worker
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map
+public/worker-*.js
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudiocode,node
