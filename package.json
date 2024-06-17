@@ -7,9 +7,10 @@
     "dev": "env-cmd -f .env.development next dev --experimental-https --experimental-https-key ./cert/localhost-key.pem --experimental-https-cert ./cert/localhost.pem",
     "build:dev": "env-cmd -f .env.development next build",
     "build": "env-cmd -f .env.production next build",
+    "prestart": "cp -r public .next/standalone && cp -r .next/static .next/standalone/.next",
     "start:dev": "env-cmd -f .env.development node .next/standalone/server.js",
     "start": "node .next/standalone/server.js",
-    "format": "prettier ./pages --write",
+    "format": "prettier . --write --cache",
     "lint": "next lint",
     "prepare": "husky"
   },
