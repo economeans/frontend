@@ -29,7 +29,9 @@
     "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
     "no-useless-catch": "off",
     "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "react/jsx-props-no-spreading": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]   
   }
 }
