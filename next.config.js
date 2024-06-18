@@ -1,11 +1,6 @@
-const withPWA = require('next-pwa');
-const runtimeCaching = require('next-pwa/cache');
-
-module.exports = withPWA({
+const withPWA = require('next-pwa')({
   dest: 'public',
   disable: process.env.NODE_ENV === 'development',
-  register: true,
-  skipWaiting: true,
-  customWorkerDir: 'worker',
-  runtimeCaching,
 });
+
+module.exports = withPWA({});
