@@ -15,14 +15,15 @@
 | Node          | 20.xx   |                   |
 | PNPM          | 9.xx    | 패키지 설치 관리  |
 | React         | 18.xx   |                   |
-| React Router  | 6.xx    | SPA 라우팅        |
-| React Cookie  | 7.xx    | 쿠키 관리         |
+| Next.js       | 14.xx   | SSR               |
+| next-pwa      | 5.xx    | PWA               |
+| cookies-next  | 4.xx    | 쿠키 관리         |
 | Zustand       | 4.xx    | 상태 관리         |
 | Apollo Client | 4.xx    | GraphQl 상태 관리 |
 | GraphQL       | 16.xx   |                   |
 | Tailwind CSS  | 3.xx    |                   |
 | Sass(SCSS)    | 1.xx    |                   |
-| ESlint        | 9.xx    | 코드 품질         |
+| ESlint        | 8.xx    | 코드 품질         |
 | Prettier      | 3.xx    | 코드 일관성        |
 | husky         | 9.xx    |                   |
 | lint-stage    | 15.xx   |                   |
@@ -34,10 +35,14 @@
  $ pnpm dev
 
  # 로컬 빌드
- $ pnpm start
-
+ $ pnpm build:dev
  # 배포 빌드
  $ pnpm build
+
+ # 로컬 빌드 파일 실행
+ $ pnpm start:dev
+ # 배포 빌드 파일 실행
+ $ pnpm start
 ```
 
 ### SSL 인증서 발급
