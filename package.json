@@ -10,7 +10,7 @@
     "start": "next start",
     "format": "prettier --write --cache .",
     "lint": "next lint --fix",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "husky": {
     "hooks": {
@@ -18,7 +18,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css,scss,sass}": [
+    "*/**/*.{js,jsx,ts,tsx,css,scss,sass}": [
       "pnpm format",
       "pnpm lint"
     ]
