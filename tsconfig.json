@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,9 +19,25 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/*": [
+        "./*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "exclude": ["node_modules"], // 다른 위치의 tsconfig.json 파일의 설정
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "eslint.config.js", "worker/index.ts"] //  프로젝트에서 컴파일할 파일들을 지정
+  "exclude": [
+    "node_modules"
+  ], // 다른 위치의 tsconfig.json 파일의 설정
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "eslint.config.js",
+    "worker/index.ts",
+    ".next/types/**/*.ts"
+  ] //  프로젝트에서 컴파일할 파일들을 지정
 }
