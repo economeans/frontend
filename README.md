@@ -24,7 +24,7 @@
 | Tailwind CSS  | 3.xx    |                   |
 | Sass(SCSS)    | 1.xx    |                   |
 | ESlint        | 8.xx    | 코드 품질         |
-| Prettier      | 3.xx    | 코드 일관성        |
+| Prettier      | 3.xx    | 코드 일관성       |
 | husky         | 9.xx    |                   |
 | lint-stage    | 15.xx   |                   |
 

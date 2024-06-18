@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="flex justify-between h-10">
+    <header className="flex h-10 justify-between">
       <Link href="/">HOME</Link>
       <nav>
         <ul className="flex">
