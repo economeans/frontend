@@ -10,7 +10,7 @@
     "start": "next start",
     "format": "prettier --write --cache .",
     "lint": "next lint --fix",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
