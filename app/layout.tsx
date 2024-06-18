@@ -1,11 +1,8 @@
-'use client';
-
-import client from '@/apollo';
 import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
-import { ApolloProvider } from '@apollo/client';
 import { ReactNode } from 'react';
 import '@/sass/global.scss';
+import ApolloWrapper from '@/apollo';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -17,11 +14,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body>
-        <ApolloProvider client={client}>
-          <Header />
+        <Header />
+        <ApolloWrapper>
           <main>{children}</main>
-          <Footer />
-        </ApolloProvider>
+        </ApolloWrapper>
+        <Footer />
       </body>
     </html>
   );

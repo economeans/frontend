@@ -69,16 +69,11 @@ $ mkcert localhost
 ```
 .
 ├── public
-└── src
-   ├── components    // 재사용 컴포넌트
-   │  └── common     // 공통 사용 컴포넌트
-   ├── apollo        // GraphQL 상태관리
-   ├── pages         // 페이지 컴포넌트
-   ├── router        // 페이지 라우터
-   ├── sass          // Sass(SCSS) 스타일
-   ├── store         // zustand 상태 관리
-   ├── graphql       // GraphQL query
-   ├── worker        // PWA를 위한 Service workers
-   ├── App.tsx
-   └── index.tsx
+├── app
+├── components    
+├── apollo        // GraphQL 상태관리
+├── types         // Typescript type
+├── sass          // Sass(SCSS) 스타일
+├── store         // zustand 상태 관리
+└── worker        // PWA를 위한 Service workers
 ```
