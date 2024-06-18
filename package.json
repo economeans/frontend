@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development next dev",
+    "dev": "cross-env NODE_ENV=development next dev --experimental-https --experimental-https-key ./cert/localhost-key.pem --experimental-https-cert ./cert/localhost.pem",
     "build:dev": "cross-env NODE_ENV=development next build",
     "build": "cross-env NODE_ENV=production next build",
-    "prestart": "cp -r public .next/standalone && cp -r .next/static .next/standalone/.next",
-    "start": "node .next/standalone/server.js",
+    "start": "next start",
     "format": "prettier . --write --cache",
     "lint": "next lint",
     "prepare": "husky"

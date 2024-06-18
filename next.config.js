@@ -1,18 +1,15 @@
 const runtimeCaching = require("next-pwa/cache");
-const withPWA = require("next-pwa");
-
-const nextConfig = {
-  images: {
-    domains: ["lh3.googleusercontent.com", "ssl.pstatic.net", "k.kakaocdn.net"],
-  },
-  reactStrictMode: true,
-  output: "standalone",
-};
-
-module.exports = withPWA({
+const withPWA = require("next-pwa")({
   dest: "public",
+  disable: process.env.NODE_ENV === 'development',
   register: true,
   skipWaiting: true,
   customWorkerDir: "worker",
   runtimeCaching,
-})(nextConfig);
+});
+
+module.exports = withPWA({
+  compiler: {
+    removeConsole: true,
+  }
+});
