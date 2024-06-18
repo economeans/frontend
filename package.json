@@ -19,8 +19,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,scss,sass}": [
-      "pnpm format",
-      "pnpm lint",
+      "prettier --write",
+      "eslint --fix",
       "git add ."
     ]
   },
