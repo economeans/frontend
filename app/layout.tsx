@@ -1,18 +1,21 @@
+import type { Metadata } from 'next';
+import { ReactNode } from 'react';
+import ApolloWrapper from '@/apollo';
 import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
-import { ReactNode } from 'react';
 import '@/sass/global.scss';
-import ApolloWrapper from '@/apollo';
+
+export const metadata: Metadata = {
+  title: process.env.APP_TITLE,
+  description: process.env.APP_DESCRIPTION,
+  applicationName: process.env.APP_NAME,
+  themeColor: '#000000',
+  manifest: '/manifest.json',
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
-      <head>
-        <meta name="theme-color" content="#000000" />
-        <link rel="icon" href="/assets/favicon/favicon.ico" />
-        <link rel="apple-touch-icon" href="/assets/icons/logo192.png" />
-        <link rel="manifest" href="/manifest.json" />
-      </head>
       <body>
         <Header />
         <ApolloWrapper>
