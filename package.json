@@ -19,9 +19,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,scss,sass}": [
-      "prettier --write",
-      "next lint --fix",
-      "git add ."
+      "pnpm format",
+      "pnpm lint"
     ]
   },
   "keywords": [],
