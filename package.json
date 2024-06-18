@@ -20,7 +20,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,scss,sass}": [
       "prettier --write",
-      "eslint --fix",
+      "next lint --fix",
       "git add ."
     ]
   },
