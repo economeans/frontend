@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { ReactNode } from 'react';
 import ApolloWrapper from '@/apollo';
 import Footer from '@/components/layout/footer';
@@ -9,8 +9,11 @@ export const metadata: Metadata = {
   title: process.env.APP_TITLE,
   description: process.env.APP_DESCRIPTION,
   applicationName: process.env.APP_NAME,
-  themeColor: '#000000',
   manifest: '/manifest.json',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#000000',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
