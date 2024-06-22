@@ -13,7 +13,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    const path = pathname.slice(1);
+    const path = pathname.split('/')[1];
     document.title = `${process.env.APP_TITLE}${path ? ' | ' + pagesTitle[path as PageTitleTypes] : ''}`;
   }, [pathname]);
 
