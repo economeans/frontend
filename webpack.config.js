@@ -15,8 +15,11 @@ dotenv.config({
   path: production ? '.env.production' : '.env.local',
 });
 const PORT = process.env.PORT || 3000;
-const API_URL = process.env.API_URL || 'https://localhost:8080';
 const APP_TITLE = process.env.APP_TITLE || 'APP TITLE';
+const APP_NAME = process.env.APP_NAME || 'APP NAME';
+const APP_DESCRIPTION = process.env.APP_DESCRIPTION || 'APP DESCRIPTION';
+const PUBLIC_URL = process.env.PUBLIC_URL || 'https://localhost:3000';
+const API_URL = process.env.API_URL || 'https://localhost:8080';
 
 module.exports = {
   mode: production ? 'production' : 'development',
@@ -25,6 +28,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: production ? '[name].[contenthash].js' : '[name].min.js',
+    publicPath: '/',
   },
   optimization: {
     minimizer: production
@@ -69,12 +73,13 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     port: PORT,
+    open: true,
     static: path.resolve(__dirname, 'dist'),
     server: {
       type: 'https',
       options: {
-        key: path.resolve(__dirname, 'cert/localhost-key.pem'),
         cert: path.resolve(__dirname, 'cert/localhost.pem'),
+        key: path.resolve(__dirname, 'cert/localhost-key.pem'),
       },
     },
     proxy: [
@@ -95,7 +100,14 @@ module.exports = {
       React: 'react',
     }),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify(process.env),
+      'process.env': JSON.stringify({
+        APP_MODE: process.env.NODE_ENV,
+        APP_TITLE,
+        APP_NAME,
+        APP_DESCRIPTION,
+        PUBLIC_URL,
+        API_URL
+      }),
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
@@ -110,8 +122,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'public/assets', to: 'assets'},
-        { from: 'public/manifest.json', to: './'},
+        { from: 'public/assets', to: 'assets' },
+        { from: 'public/manifest.json', to: './' },
       ],
     }),
     new webpack.HotModuleReplacementPlugin(),
@@ -119,9 +131,10 @@ module.exports = {
       filename: production ? '[name].[contenthash].css' : '[name].min.css',
     }),
     new ForkTsCheckerWebpackPlugin(),
-    production && new WorkboxPlugin.InjectManifest({
-      swSrc: './src/worker/index.ts',
-      swDest: 'service-worker.js',
-    }),
+    production &&
+      new WorkboxPlugin.InjectManifest({
+        swSrc: './src/worker/index.ts',
+        swDest: 'service-worker.js',
+      }),
   ],
 };

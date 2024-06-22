@@ -8,17 +8,23 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <NotFound />,
     children: [
       {
         index: true,
-        path: '/',
-        title: 'home',
         element: <Home />,
       },
       {
-        path: '/article',
-        element: <Article />,
+        path: 'article',
+        children: [
+          {
+            index: true,
+            element: <Article />,
+          },
+        ],
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },

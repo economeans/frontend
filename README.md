@@ -23,22 +23,9 @@
 | Tailwind CSS  | 3.xx    |                   |
 | Sass(SCSS)    | 1.xx    |                   |
 | ESlint        | 9.xx    | 코드 품질         |
-| Prettier      | 3.xx    | 코드 일관성        |
+| Prettier      | 3.xx    | 코드 일관성       |
 | husky         | 9.xx    |                   |
 | lint-stage    | 15.xx   |                   |
-
-### Command Line
-
-```bash
- # 로컬 프로젝트 실행
- $ pnpm dev
-
- # 로컬 빌드
- $ pnpm start
-
- # 배포 빌드
- $ pnpm build
-```
 
 ### SSL 인증서 발급
 
@@ -57,6 +44,32 @@ $ mkcert -install
 
 # 인증서 생성
 $ mkcert localhost
+```
+
+### Command Line
+
+```bash
+ # pnpm 설치
+ $ npm i -g pnpm
+
+ # 로컬 프로젝트 실행
+ $ pnpm dev
+
+ # 로컬 빌드
+ $ pnpm build:dev
+
+ # 배포 빌드
+ $ pnpm build
+```
+
+### 빌드 로컬 테스트
+
+```bash
+ $ npm i -g serve
+ # http
+ $ serve -s dist
+ # https
+ $ serve -s dist -S --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem
 ```
 
 ### Directory
