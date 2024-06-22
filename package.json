@@ -18,8 +18,8 @@
   },
   "lint-staged": {
     "src/**/*": [
-      "pnpm format",
-      "pnpm lint",
+      "prettier ./src --write",
+      "eslint ./src --fix",
       "git add ."
     ]
   },
