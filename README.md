@@ -56,7 +56,7 @@ $ mkcert localhost
  $ pnpm dev
 
  # 로컬 빌드
- $ pnpm build:dev
+ $ pnpm start
 
  # 배포 빌드
  $ pnpm build
