@@ -4,7 +4,12 @@ module.exports = {
     "./public/index.html"
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        'hh': '3rem',
+        'fh': '3rem'
+      }
+    },
   },
   plugins: [],
 };
