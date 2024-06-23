@@ -4,7 +4,7 @@ import '@/sass/components/common/header';
 export default function Header() {
   return (
     <header className="flex justify-between">
-      <Link to="/">HOME</Link>
+      <Link to="/">ecomeans</Link>
       <nav>
         <ul className="flex">
           <li>
