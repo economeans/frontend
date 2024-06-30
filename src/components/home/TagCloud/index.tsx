@@ -3,13 +3,13 @@ import * as am5 from '@amcharts/amcharts5';
 import * as am5wc from '@amcharts/amcharts5/wc';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 
-export default function Amcharts() {
+export default function TagCloud() {
   useLayoutEffect(() => {
-    const root = am5.Root.new('chartdiv');
+    const root = am5.Root.new('tag-cloud');
 
     root.setThemes([am5themes_Animated.new(root)]);
 
-    const chart = root.container.children.push(
+    const container = root.container.children.push(
       am5.Container.new(root, {
         width: am5.percent(100),
         height: am5.percent(100),
@@ -17,20 +17,13 @@ export default function Amcharts() {
       }),
     );
 
-    chart.children.push(
-      am5.Label.new(root, {
-        text: 'Amcharts',
-        fontSize: 20,
-        x: am5.percent(50),
-        centerX: am5.percent(50),
-      }),
-    );
-
-    const series = chart.children.push(
+    const series = container.children.push(
       am5wc.WordCloud.new(root, {
+        maxCount: 50,
         categoryField: 'tag',
         valueField: 'weight',
         calculateAggregates: true,
+        randomness: 0.2,
       }),
     );
 
@@ -53,7 +46,7 @@ export default function Amcharts() {
       cursorOverStyle: 'pointer',
     });
 
-    series.data.setAll([
+    const data = [
       { tag: 'JavaScript', weight: 64.96 },
       { tag: 'HTML/CSS', weight: 56.07 },
       { tag: 'Python', weight: 48.24 },
@@ -92,12 +85,14 @@ export default function Amcharts() {
       { tag: 'APL', weight: 0.65 },
       { tag: 'Crystal', weight: 0.56 },
       { tag: 'COBOL', weight: 0.53 },
-    ]);
+    ];
+
+    series.data.setAll(data);
 
     return () => {
       root.dispose();
     };
   }, []);
 
-  return <div id="chartdiv" style={{ width: '500px', height: '500px' }}></div>;
+  return <div id="tag-cloud" style={{ width: '40rem', height: '40rem' }}></div>;
 }
