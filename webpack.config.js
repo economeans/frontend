@@ -20,6 +20,8 @@ const APP_NAME = process.env.APP_NAME || 'APP NAME';
 const APP_DESCRIPTION = process.env.APP_DESCRIPTION || 'APP DESCRIPTION';
 const PUBLIC_URL = process.env.PUBLIC_URL || 'https://localhost:3000';
 const API_URL = process.env.API_URL || 'https://localhost:8080';
+const KOREA_EXIM_API_URL = process.env.KOREA_EXIM_API_URL || '';
+const KOREA_EXIM_API_KEY = process.env.KOREA_EXIM_API_KEY || '';
 
 module.exports = {
   mode: production ? 'production' : 'development',
@@ -59,14 +61,18 @@ module.exports = {
         use: [production ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
       },
       {
-        test: /\.(png|jpe?g|svg|gif|webp)$/,
-        type: 'assets',
+        test: /\.(png|jpe?g|gif|webp)$/,
+        type: 'asset/resource',
         parser: {
           dataUrlCondition: {
             maxSize: 4 * 1024,
           },
         },
       },
+      {
+        test: /\.svg$/,
+        type: 'asset/resource'
+      }
     ],
   },
   // webpack-dev-server
@@ -87,10 +93,31 @@ module.exports = {
         context: ['/api'],
         target: API_URL,
       },
+      {
+        context: ['/koreaexim'],
+        target: KOREA_EXIM_API_URL,
+        changeOrigin: true,
+        pathRewrite: { '^/koreaexim': '' },
+      },
     ],
   },
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.sass', '.scss', '.json'],
+    extensions: [
+      '.js',
+      '.ts',
+      '.jsx',
+      '.tsx',
+      '.css',
+      '.sass',
+      '.scss',
+      '.json',
+      '.png',
+      '.jpg',
+      '.jpeg',
+      '.svg',
+      '.gif',
+      '.webp',
+    ],
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
@@ -106,7 +133,9 @@ module.exports = {
         APP_NAME,
         APP_DESCRIPTION,
         PUBLIC_URL,
-        API_URL
+        API_URL,
+        KOREA_EXIM_API_URL,
+        KOREA_EXIM_API_KEY,
       }),
     }),
     new HtmlWebpackPlugin({
@@ -136,5 +165,5 @@ module.exports = {
         swSrc: './src/worker/index.ts',
         swDest: 'service-worker.js',
       }),
-  ],
+  ].filter(Boolean),
 };
