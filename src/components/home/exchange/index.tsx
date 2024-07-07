@@ -1,59 +1,14 @@
+import { Days } from '@/utils';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
-interface ResExchangeRate {
-  bkpr: string;
-  cur_nm: string;
-  cur_unit: string;
-  deal_bas_r: string;
-  kftc_bkpr: string;
-  kftc_deal_bas_r: string;
-  result: number;
-  ten_dd_efee_r: string;
-  ttb: string;
-  tts: string;
-  yy_efee_r: string;
-}
-
-interface ExchangeRate {
-  cur_nm: string;
-  cur_unit: string;
-  ttb: string;
-  tts: string;
-  last_ttb: string;
-  last_tts: string;
-  order: number;
-}
 
 export default function index() {
   const [exchangeList, setExchangeList] = useState<ExchangeRate[]>([]);
   const exchageUnits = ['USD', 'JPY', 'EUR', 'CNH'];
+
   async function getExchangeData() {
-    function getCalcDay() {
-      const today = new Date();
-      const yesterday = new Date();
-      yesterday.setDate(yesterday.getDate() - 1);
-      const dayOfWeek = today.getDay();
-      if (dayOfWeek === 6) {
-        today.setDate(today.getDate() - 1);
-        yesterday.setDate(yesterday.getDate() - 1);
-      } else if (dayOfWeek === 0) {
-        today.setDate(today.getDate() - 2);
-        yesterday.setDate(yesterday.getDate() - 2);
-      }
-      const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, '0');
-      const day = String(today.getDate()).padStart(2, '0');
-      const yyear = yesterday.getFullYear();
-      const ymonth = String(yesterday.getMonth() + 1).padStart(2, '0');
-      const yday = String(yesterday.getDate()).padStart(2, '0');
-      return {
-        today: `${year}${month}${day}`,
-        yesterday: `${yyear}${ymonth}${yday}`,
-      };
-    }
     try {
-      const { today, yesterday } = getCalcDay();
+      const { today, yesterday } = Days.getWeekDays();
       const { data } = await axios.get('/koreaexim', {
         params: {
           authkey: process.env.KOREA_EXIM_API_KEY,
@@ -87,9 +42,11 @@ export default function index() {
       console.log(err);
     }
   }
+
   useEffect(() => {
     getExchangeData();
   }, []);
+
   return (
     <div className="mt-5 flex flex-col items-center justify-center gap-10">
       {exchangeList.map((item) => (
