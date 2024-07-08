@@ -84,8 +84,9 @@ module.exports = {
     },
     proxy: [
       {
-        context: ['/api'],
+        context: ['/api', '/articles'],
         target: API_URL,
+        changeOrigin: true,
       },
     ],
   },
