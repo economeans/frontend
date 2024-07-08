@@ -96,6 +96,7 @@ module.exports = {
       {
         context: ['/koreaexim'],
         target: KOREA_EXIM_API_URL,
+        secure: false,
         changeOrigin: true,
         pathRewrite: { '^/koreaexim': '' },
       },
