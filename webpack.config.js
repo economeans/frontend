@@ -86,7 +86,6 @@ module.exports = {
       {
         context: ['/api', '/articles'],
         target: API_URL,
-        changeOrigin: true,
       },
     ],
   },
