@@ -11,9 +11,15 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const dotenv = require('dotenv');
 const production = process.env.NODE_ENV === 'production'; // 프로덕션 모드 여부 확인
-const env = dotenv.config({
+dotenv.config({
   path: production ? '.env.production' : '.env.local',
-}).parsed;
+});
+const PORT = process.env.PORT || 3000;
+const APP_TITLE = process.env.APP_TITLE || 'APP TITLE';
+const APP_NAME = process.env.APP_NAME || 'APP NAME';
+const APP_DESCRIPTION = process.env.APP_DESCRIPTION || 'APP DESCRIPTION';
+const PUBLIC_URL = process.env.PUBLIC_URL || 'https://localhost:3000';
+const API_URL = process.env.API_URL || 'https://localhost:8080';
 
 module.exports = {
   mode: production ? 'production' : 'development',
@@ -66,7 +72,7 @@ module.exports = {
   // webpack-dev-server
   devServer: {
     historyApiFallback: true,
-    port: env.PORT || '3000',
+    port: PORT,
     open: true,
     static: path.resolve(__dirname, 'dist'),
     server: {
@@ -79,7 +85,7 @@ module.exports = {
     proxy: [
       {
         context: ['/api', '/articles'],
-        target: env.API_URL || 'http://localhost:8080',
+        target: API_URL,
       },
     ],
   },
@@ -94,11 +100,18 @@ module.exports = {
       React: 'react',
     }),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify(env),
+      'process.env': JSON.stringify({
+        APP_MODE: process.env.NODE_ENV,
+        APP_TITLE,
+        APP_NAME,
+        APP_DESCRIPTION,
+        PUBLIC_URL,
+        API_URL
+      }),
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      title: env.APP_TITLE || 'APP_TITLE',
+      title: APP_TITLE,
       minify: production
         ? {
             collapseWhitespace: true,
