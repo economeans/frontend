@@ -11,17 +11,9 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const dotenv = require('dotenv');
 const production = process.env.NODE_ENV === 'production'; // 프로덕션 모드 여부 확인
-dotenv.config({
+const env = dotenv.config({
   path: production ? '.env.production' : '.env.local',
-});
-const PORT = process.env.PORT || 3000;
-const APP_TITLE = process.env.APP_TITLE || 'APP TITLE';
-const APP_NAME = process.env.APP_NAME || 'APP NAME';
-const APP_DESCRIPTION = process.env.APP_DESCRIPTION || 'APP DESCRIPTION';
-const PUBLIC_URL = process.env.PUBLIC_URL || 'https://localhost:3000';
-const API_URL = process.env.API_URL || 'https://localhost:8080';
-const KOREA_EXIM_API_URL = process.env.KOREA_EXIM_API_URL || '';
-const KOREA_EXIM_API_KEY = process.env.KOREA_EXIM_API_KEY || '';
+}).parsed;
 
 module.exports = {
   mode: production ? 'production' : 'development',
@@ -78,7 +70,7 @@ module.exports = {
   // webpack-dev-server
   devServer: {
     historyApiFallback: true,
-    port: PORT,
+    port: env.PORT || '3000',
     open: true,
     static: path.resolve(__dirname, 'dist'),
     server: {
@@ -91,11 +83,11 @@ module.exports = {
     proxy: [
       {
         context: ['/api', '/articles'],
-        target: API_URL,
+        target: env.API_URL || 'http://localhost:8080',
       },
       {
         context: ['/koreaexim'],
-        target: KOREA_EXIM_API_URL,
+        target: env.KOREA_EXIM_API_URL,
         secure: false,
         changeOrigin: true,
         pathRewrite: { '^/koreaexim': '' },
@@ -128,20 +120,11 @@ module.exports = {
       React: 'react',
     }),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify({
-        APP_MODE: process.env.NODE_ENV,
-        APP_TITLE,
-        APP_NAME,
-        APP_DESCRIPTION,
-        PUBLIC_URL,
-        API_URL,
-        KOREA_EXIM_API_URL,
-        KOREA_EXIM_API_KEY,
-      }),
+      'process.env': JSON.stringify(env),
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      title: APP_TITLE,
+      title: env.APP_TITLE || 'APP_TITLE',
       minify: production
         ? {
             collapseWhitespace: true,
