@@ -61,6 +61,11 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
+      },
     ],
   },
   // webpack-dev-server
@@ -76,15 +81,9 @@ module.exports = {
         key: path.resolve(__dirname, 'cert/localhost-key.pem'),
       },
     },
-    proxy: [
-      {
-        context: ['/api', '/articles'],
-        target: env.API_URL || 'http://localhost:8080',
-      },
-    ],
   },
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.sass', '.scss', '.json'],
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.sass', '.scss', '.json', '.gql'],
     alias: {
       '@': path.resolve(__dirname, './src'),
     },

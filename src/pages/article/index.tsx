@@ -1,21 +1,16 @@
-import axios from 'axios';
+import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
+import GET_LIST_ARTICLE from '@/graphql/article.gql';
 
 export default function Article() {
   const [articles, setArticles] = useState<ArticleData[]>([]);
-
-  async function getArticles() {
-    try {
-      const { data } = await axios.get('/articles');
-      setArticles(data.articles);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const { data } = useQuery(GET_LIST_ARTICLE, { variables: { category: 'general' } });
 
   useEffect(() => {
-    getArticles();
-  }, []);
+    if (data) {
+      setArticles(data.getListArticle.articles);
+    }
+  }, [data]);
 
   return (
     <article>
@@ -27,6 +22,9 @@ export default function Article() {
               <h3 className="text-lg font-bold">{article.headline}</h3>
               <p className="text-base">{article.summary}</p>
             </div>
+            <a className="text-end font-bold" href={article.url} target="_blank" rel="noreferrer">
+              DETAIL
+            </a>
           </div>
         ))}
       </div>
