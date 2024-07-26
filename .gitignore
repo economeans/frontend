@@ -225,4 +225,7 @@ $RECYCLE.BIN/
 # Certificate
 /cert
 
+# Node
+.nvmrc
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudiocode,node

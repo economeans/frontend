@@ -105,6 +105,9 @@ importers:
       globals:
         specifier: ^15.6.0
         version: 15.6.0
+      graphql-tag:
+        specifier: ^2.12.6
+        version: 2.12.6(graphql@16.9.0)
       html-webpack-plugin:
         specifier: ^5.6.0
         version: 5.6.0(webpack@5.92.1(webpack-cli@5.1.4))
