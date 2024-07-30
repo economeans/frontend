@@ -11,12 +11,9 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const dotenv = require('dotenv');
 const production = process.env.NODE_ENV === 'production'; // 프로덕션 모드 여부 확인
-dotenv.config({
+const env = dotenv.config({
   path: production ? '.env.production' : '.env.local',
-});
-const PORT = process.env.PORT || 3000;
-const API_URL = process.env.API_URL || 'https://localhost:8080';
-const APP_TITLE = process.env.APP_TITLE || 'APP TITLE';
+}).parsed;
 
 module.exports = {
   mode: production ? 'production' : 'development',
@@ -25,6 +22,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: production ? '[name].[contenthash].js' : '[name].min.js',
+    publicPath: '/',
   },
   optimization: {
     minimizer: production
@@ -63,29 +61,29 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
+      },
     ],
   },
   // webpack-dev-server
   devServer: {
     historyApiFallback: true,
-    port: PORT,
+    port: env.PORT || '3000',
+    open: true,
     static: path.resolve(__dirname, 'dist'),
     server: {
       type: 'https',
       options: {
-        key: path.resolve(__dirname, 'cert/localhost-key.pem'),
         cert: path.resolve(__dirname, 'cert/localhost.pem'),
+        key: path.resolve(__dirname, 'cert/localhost-key.pem'),
       },
     },
-    proxy: [
-      {
-        context: ['/api'],
-        target: API_URL,
-      },
-    ],
   },
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.sass', '.scss', '.json'],
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.sass', '.scss', '.json', '.gql'],
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
@@ -95,11 +93,11 @@ module.exports = {
       React: 'react',
     }),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify(process.env),
+      'process.env': JSON.stringify(env),
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      title: APP_TITLE,
+      title: env.APP_TITLE || 'APP_TITLE',
       minify: production
         ? {
             collapseWhitespace: true,
@@ -110,8 +108,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'public/assets', to: 'assets'},
-        { from: 'public/manifest.json', to: './'},
+        { from: 'public/assets', to: 'assets' },
+        { from: 'public/manifest.json', to: './' },
       ],
     }),
     new webpack.HotModuleReplacementPlugin(),
@@ -119,9 +117,10 @@ module.exports = {
       filename: production ? '[name].[contenthash].css' : '[name].min.css',
     }),
     new ForkTsCheckerWebpackPlugin(),
-    production && new WorkboxPlugin.InjectManifest({
-      swSrc: './src/worker/index.ts',
-      swDest: 'service-worker.js',
-    }),
+    production &&
+      new WorkboxPlugin.InjectManifest({
+        swSrc: './src/worker/index.ts',
+        swDest: 'service-worker.js',
+      }),
   ],
 };

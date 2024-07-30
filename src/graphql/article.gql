@@ -1,0 +1,12 @@
+query GetListArticle($category: String) {
+  getListArticle(requestDto: { category: $category }) {
+    articles {
+      category
+      headline
+      id
+      image
+      summary
+      url
+    }
+  }
+}
