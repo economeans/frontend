@@ -228,4 +228,6 @@ $RECYCLE.BIN/
 # Node
 .nvmrc
 
+# Jetbrain
+.idea
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudiocode,node
