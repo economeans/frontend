@@ -50,7 +50,12 @@ module.exports = {
       },
       {
         test: /\.(sass|css|scss)$/,
-        use: [production ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
+        use: [production ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', {
+          loader: 'sass-loader',
+          options: {
+            implementation: require('sass')
+          }
+        }, 'postcss-loader'],
       },
       {
         test: /\.(png|jpe?g|svg|gif|webp)$/,
